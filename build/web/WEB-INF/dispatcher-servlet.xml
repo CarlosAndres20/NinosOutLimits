@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+
+    <!--
+    Most controllers will use the ControllerClassNameHandlerMapping above, but
+    for the index controller we are using ParameterizableViewController, so we must
+    define an explicit mapping for it.
+    -->
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="index.htm">AcudienteController</prop>
+                <prop key="indexAcudiente.htm">AcudienteController</prop>
+                <prop key="editarAcudiente.htm">AcudienteController</prop>
+                <prop key="deleteAcudiente.htm">AcudienteController</prop>
+                
+                <prop key="indexUser.htm">UsuarioController</prop>
+                <prop key="RegisterUser.htm">UsuarioController</prop>
+                <prop key="editarUsuario.htm">UsuarioController</prop>
+                <prop key="deleteUsuario.htm">UsuarioController</prop>
+                
+                
+                <prop key="indexJuego.htm">JuegoController</prop>
+                <prop key="indexActivo.htm">JuegoController</prop>
+                <prop key="AgregarJuego.htm">JuegoController</prop>
+                <prop key="editarJuego.htm">JuegoController</prop>
+                <prop key="deleteJuego.htm">JuegoController</prop>
+                <prop key="Juego.htm">JuegoController</prop>
+                
+                <prop key="indexMatricula.htm">MatriculaController</prop>
+                <prop key="agregarMatricula.htm">MatriculaController</prop>
+                <prop key="editarMatricula.htm">MatriculaController</prop>
+                <prop key="deleteMatricula.htm">MatriculaController</prop>
+                
+                <prop key="indexAsignatura.htm">AsignaturaController</prop>
+                <prop key="agregarAsignatura.htm">AsignaturaController</prop>
+                <prop key="editarAsignatura.htm">AsignaturaController</prop>
+                <prop key="deleteAsignatura.htm">AsignaturaController</prop>
+                
+                <prop key="indexCurso.htm">CursoController</prop>
+                <prop key="agregarCurso.htm">CursoController</prop>
+                <prop key="editarCurso.htm">CursoController</prop>
+                <prop key="deleteCurso.htm">CursoController</prop>
+                
+                <!--<prop key="Juego.htm">MatriculaController</prop>-->
+                
+                
+            </props>
+        </property>
+    </bean>
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+
+    <!--
+    The index controller.
+    -->
+    <bean name="AcudienteController" class="Controller.AcudienteController" />
+    <bean name="UsuarioController" class="Controller.UsuarioController" />
+    <bean name="JuegoController" class="Controller.JuegoController" />
+    <bean name="MatriculaController" class="Controller.MatriculaController" />
+    <bean name="AsignaturaController" class="Controller.AsignaturaController" />
+    <bean name="CursoController" class="Controller.CursoController" />
+
+</beans>
